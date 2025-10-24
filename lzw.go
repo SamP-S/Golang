@@ -71,7 +71,10 @@ func main() {
 	for name, text := range testData {
 		fmt.Printf("%s:\n", name)
 
-		input, _ := base64.StdEncoding.DecodeString(text)
+		input, err := base64.StdEncoding.DecodeString(text)
+
+		// catch and print error
+		fmt.Println("error =", err)
 
 		codes := read(bytes.NewReader(input))
 
